@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+    <script>
+      new WOW().init();
+    </script>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      /* Animated Background */
+      body {
+        background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #6a0572);
+        background-size: 400% 400%;
+        animation: gradientAnimation 15s ease infinite;
+        color: white;
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Particle Effect */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      /* Navigation Bar */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px #ff8c00;
+        transform: scale(1.1);
+      }
+
+      /* Header Section */
+      header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .intro {
+        font-size: 2.5rem;
+        font-weight: 600;
+      }
+
+      .glitch {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ff8c00;
+        text-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+        position: relative;
+      }
+
+      /* Animated Text */
+      .animated-text {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ff8c00;
+        height: 40px;
+        overflow: hidden;
+        margin-top: 10px;
+      }
+
+      .animated-text span {
+        display: block;
+        animation: slideText 6s infinite;
+      }
+
+      @keyframes slideText {
+        0% {
+          transform: translateY(0%);
+        }
+        33% {
+          transform: translateY(-100%);
+        }
+        66% {
+          transform: translateY(-200%);
+        }
+        100% {
+          transform: translateY(-300%);
+        }
+      }
+
+      /* Projects Section */
+      .projects {
+        padding: 80px 10%;
+        text-align: center;
+      }
+
+      .projects h2 {
+        font-size: 2.5rem;
+        color: #ff8c00;
+        margin-bottom: 30px;
+      }
+
+      .project-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .project-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 5px 15px rgba(255, 140, 0, 0.6);
+        backdrop-filter: blur(8px);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      .project-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 10px 20px rgba(255, 140, 0, 0.9);
+      }
+
+      .project-card h3 {
+        font-size: 1.5rem;
+        color: #ff8c00;
+        margin-bottom: 10px;
+      }
+
+      .project-card p {
+        font-size: 1rem;
+        color: white;
+        line-height: 1.6;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .project-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .project-container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Particle Effect -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('experience') }}">Experience</a>
+      <a href="{{ url_for('projects') }}">Projects</a>
+      <a href="{{ url_for('skills') }}">Skills</a>
+      <a href="{{ url_for('contact') }}">Contact</a>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="projects">
+      <h2>My Projects</h2>
+      <div class="project-container">
+        <!-- Sign Language Detector -->
+        <div class="project-card">
+          <h3>Netra Shakti</h3>
+          <p>
+            Big Brother wishes he had this—tracking blinks, gazes, and all your
+            shifty eye moves before you even know it. Stay sharp or get spotted!
+          </p>
+          <a
+            href="https://github.com/Shrutakeerti/Netra-Shakti"
+            target="_blank"
+          >
+            <img
+              src="static\first.jpeg"
+              alt="The Eye Hub You Gotta See"
+              class="project-image"
+            />
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h3>Crime FileX</h3>
+          <p>
+            AI so sharp, it spots trouble before criminals even think about
+            committing the crime. Stay mad, villains
+          </p>
+          <a href="https://github.com/Shrutakeerti/Crime-FileX" target="_blank">
+            <img
+              src="static\crime.jpeg"
+              alt="Eye Gaze Tracking"
+              class="project-image"
+            />
+          </a>
+        </div>
+
+        <!-- Stock Movement Predictor -->
+        <div class="project-card">
+          <h3>DivyaNagari</h3>
+          <p>
+            Why settle for flawed governance when AI can rule with Krishna’s
+            wisdom? This city doesn’t just function—it outsmarts, outplans, and
+            outperforms!
+          </p>
+          <a href="https://github.com/Shrutakeerti/DivyaNagari" target="_blank">
+            <img src="static\city (1).jpeg" class="project-image" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2>Mini Projects</h2>
+      <div class="project-container">
+        <!-- Sign Language Detector -->
+        <div class="project-card">
+          <h3>Stonks Sniper</h3>
+          <p>
+            💀 Reddit whispers, we listen. FinBERT deciphers the hype, and the
+            ML model turns it into cold, hard stock predictions. 🚀📉
+          </p>
+          <a
+            href="https://github.com/Shrutakeerti/Assignments-Combined/tree/main/Scraping-Stocks-Info"
+            target="_blank"
+          >
+            <img
+              src="static\stocks.jpeg"
+              alt="Sign Language Detector"
+              class="project-image"
+            />
+          </a>
+        </div>
+
+        <!-- Eye Gaze Tracking -->
+        <div class="project-card">
+          <h3>LOST IN TRANSLATION EDITION 🎭🔥</h3>
+          <p>
+            BLEU scores plummeted, meaning your words get absolutely wrecked
+            after a few loops—so much for AI knowing all languages equally!
+          </p>
+          <a
+            href="https://github.com/Shrutakeerti/Assignments-Combined/tree/main/Winter%20LLM"
+            target="_blank"
+          >
+            <img
+              src="static\LLM.jpg"
+              alt="Eye Gaze Tracking"
+              class="project-image"
+            />
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h3>WellXtract</h3>
+          <p>
+            Hacking the Earth’s hydration—AI pinpoints wells before they go
+            ghost mode! 🚰💻
+          </p>
+          <a
+            href="https://github.com/Shrutakeerti/2-projects-Combined-AIML/tree/main/Jal_Shakti"
+            target="_blank"
+          >
+            <img
+              src="static\well.jpg"
+              alt="Eye Gaze Tracking"
+              class="project-image"
+            />
+          </a>
+        </div>
+
+        <!-- railrage -->
+        <div class="project-card">
+          <h3>RAILRAGE</h3>
+          <p>
+            Taming the Tracks with AI! No more railway chaos—our AI predicts
+            rake demand, schedules like a boss, and keeps the wheels rolling
+            smooth! 🔥🚀
+          </p>
+          <a
+            href="https://github.com/Shrutakeerti/2-projects-Combined-AIML/tree/main/Forecasting%20and%20Scheduling%20of%20Railway%20Rakes"
+            target="_blank"
+          >
+            <img src="static\download.jpg" class="project-image" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
