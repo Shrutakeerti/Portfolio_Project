@@ -52,8 +52,7 @@ cookiecutter==2.6.0
 cryptography==43.0.1
 cvzone==1.6.1
 cycler==0.12.1
-# Editable install with no version control (data_science_notebook_reviewer==0.1.0)
--e c:\users\shrutakeerti datta\data-science-notebook-reviewer
+
 dataclasses-json==0.6.7
 datasets==3.0.0
 debugpy==1.8.1
@@ -72,7 +71,6 @@ django-permissionedforms==0.1
 django-taggit==6.1.0
 django-treebeard==4.7.1
 djangorestframework==3.15.2
-dlib @ file:///C:/Users/Shrutakeerti%20Datta/Downloads/Dlib_Windows_Python3.x-main1/Dlib_Windows_Python3.x-main/dlib-19.24.99-cp312-cp312-win_amd64.whl#sha256=20c62e606ca4c9961305f7be3d03990380d3e6c17f8d27798996e97a73271862
 dm-tree==0.1.9
 dnspython==2.7.0
 docstring_parser==0.16
